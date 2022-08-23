@@ -1,0 +1,11 @@
+RUN COMMAND IN LOOP FROM BASE MACHINE TO ALL CMS
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Create a file named 'res' in your home directory of base machine and execute command like below. we can aslo craeate a file and and run it as script
+
+for i in `cat res`; do ssh -o PasswordAuthentication=no -o StrictHostKeyChecking=no -o ConnectTimeout=30 osadmin@$i "hostname ; sudo /bin/rm /etc/res/resamad.pid;sudo /usr/local/bin/resamad -ddvm00006192.solon.prd " ; done
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+pgrep  resamad | xargs sudo kill -9 | sudo /bin/rm /etc/res/resamad.pid| echo "1" | sudo /usr/local/bin/resamad -ddvm00006194.solon.prd
+
+
